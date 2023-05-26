@@ -14,5 +14,12 @@ Naming is hard. Frogs are cool. Somehow the word association from "network" to "
 
 Consider making a donation to charities that further conservation and environmental efforts like [Save The Frogs](https://savethefrogs.com) or the [Invasive Species Action Network](https://stopais.org), or volunteering for charities like [The Amphibian Foundation](https://www.amphibianfoundation.org).
 
+## Installation
+You're welcome to do it the good ol' manual way by copying the _Sources_ folder. Or you can use Swift Package Manager and set the package path to:
+
+```swift
+https://github.com/nenosllc/Froggy.git
+```
+
 ## Contributing
 Please! Come one, come all! Contributions more than welcome 🙂
