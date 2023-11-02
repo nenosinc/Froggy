@@ -48,4 +48,29 @@ public extension URLSession {
         }
     }
     
+    func runWithoutResults(_ request: URLRequest) async throws {
+        do {
+            frogLog("Running URLSession with request: \(request)")
+            
+            let (_, response) = try await data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                frogLog("Received nil response from request.")
+                throw DataError.genericNetworkingFailure(code: 1000)
+            }
+            
+            frogLog("Request returned a \(httpResponse.statusCode) status code")
+            
+            switch httpResponse.statusCode {
+            case 200...299:
+                frogLog("Request successful.")
+                return
+            case 401, 403, 405, 422: throw DataError.notAuthed
+            case 404: throw DataError.nothingLoaded
+            default: throw DataError.genericNetworkingFailure(code: httpResponse.statusCode)
+            }
+        } catch let error {
+            frogLog("Failed to successfully run or complete request: \(request). Error: \(error)")
+            throw error
+        }
+    }
 }
