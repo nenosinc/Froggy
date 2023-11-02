@@ -9,6 +9,6 @@
 import Foundation
 
 public struct DataSourceResponse<T> {
-    let value: T
-    let response: URLResponse
+    public let value: T
+    public let response: URLResponse
 }
