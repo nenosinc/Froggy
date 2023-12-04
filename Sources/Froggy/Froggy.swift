@@ -6,13 +6,17 @@
 //  Copyright © 2023 nenos, llc. All rights reserved.
 //
 
-public struct Froggy {
+public class Froggy {
     
     public static let shared = Froggy()
     
-    public var verboseLogging = false
+    internal var verboseLogging = false
 
     public init() {
+    }
+    
+    public func verboseLogging(isOn: Bool) {
+        verboseLogging = isOn
     }
     
 }
